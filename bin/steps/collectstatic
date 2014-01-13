@@ -23,7 +23,7 @@ if [ ! "$DISABLE_COLLECTSTATIC" ] && [ -f "$MANAGE_FILE" ]; then
 
     # Check if collectstatic is configured properly.
     echo "-----> Checking whether collectstatic is configured correctly"
-    python $MANAGE_FILE collectstatic --dry-run --noinput && RUN_COLLECTSTATIC=true
+    python $MANAGE_FILE collectstatic --dry-run --noinput --traceback && RUN_COLLECTSTATIC=true
 
     # Compile assets if collectstatic appears to be kosher.
     if [ "$RUN_COLLECTSTATIC" ]; then
