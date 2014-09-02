@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+source $BIN_DIR/utils
+
+MANAGE_FILE=$(find . -maxdepth 3 -type f -name 'manage.py' | head -1)
+MANAGE_FILE=${MANAGE_FILE:-fakepath}
+
+[ -f .heroku/compilemessages_disabled ] && DISABLE_COMPILEMESSAGES=1
+
+bpwatch start compilemessages
+
+if [ ! "$DISABLE_COMPILEMESSAGES" ] && [ -f "$MANAGE_FILE" ]; then
+    set +e
+
+    echo "-----> Preparing internationalization"
+    echo "       Running compilemessages..."
+
+    # Prepare i18n with compilemessages.
+    python $MANAGE_FILE compilemessages --locale all &> /dev/null
+
+    echo
+fi
+
+bpwatch stop compilemessages

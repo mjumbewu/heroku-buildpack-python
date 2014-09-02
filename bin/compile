@@ -171,6 +171,9 @@ source $BIN_DIR/steps/pip-install
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
 
+# Django i18n support.
+sub-env $BIN_DIR/steps/compilemessages
+
 
 # ### Finalize
 #
