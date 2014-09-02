@@ -16,7 +16,7 @@ if [ ! "$DISABLE_COMPILEMESSAGES" ] && [ -f "$MANAGE_FILE" ]; then
     echo "       Running compilemessages..."
 
     # Prepare i18n with compilemessages.
-    python $MANAGE_FILE compilemessages --locale all &> /dev/null
+    python $MANAGE_FILE compilemessages --locale all --verbosity 3
 
     echo
 fi
